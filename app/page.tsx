@@ -5,36 +5,36 @@ export default function Home() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-[#f0e6d8] py-28 px-6">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-          <div>
-            <p className="text-sm tracking-[0.2em] uppercase text-[#b8956a] mb-4">
+      <section className="bg-[#f0e6d8] py-16 md:py-28 px-6">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+          <div className="order-2 md:order-1">
+            <p className="text-xs md:text-sm tracking-[0.2em] uppercase text-[#b8956a] mb-4">
               Permanent Makeup Artist · Winnipeg, Canada
             </p>
-            <h1 className="text-5xl font-light leading-tight text-[#1a1a1a] mb-6">
+            <h1 className="text-4xl md:text-5xl font-light leading-tight text-[#1a1a1a] mb-5">
               The art of<br />
               <em>natural beauty</em>
             </h1>
-            <p className="text-[#6b6b6b] text-lg leading-relaxed mb-10 max-w-md">
+            <p className="text-[#6b6b6b] text-base md:text-lg leading-relaxed mb-8 max-w-md">
               Professional permanent makeup services and online courses.
               Learn from a certified master with 10+ years of experience.
             </p>
-            <div className="flex gap-4 flex-wrap">
+            <div className="flex gap-3 flex-wrap">
               <Link
                 href="/booking"
-                className="bg-[#1a1a1a] text-white px-8 py-3 rounded-full text-sm tracking-wide hover:bg-[#333] transition-colors"
+                className="bg-[#1a1a1a] text-white px-6 md:px-8 py-3 rounded-full text-sm tracking-wide hover:bg-[#333] transition-colors"
               >
                 Book a session
               </Link>
               <Link
                 href="/courses"
-                className="border border-[#1a1a1a] text-[#1a1a1a] px-8 py-3 rounded-full text-sm tracking-wide hover:bg-[#1a1a1a] hover:text-white transition-colors"
+                className="border border-[#1a1a1a] text-[#1a1a1a] px-6 md:px-8 py-3 rounded-full text-sm tracking-wide hover:bg-[#1a1a1a] hover:text-white transition-colors"
               >
                 View courses
               </Link>
             </div>
           </div>
-          <div className="relative h-96 overflow-hidden rounded-2xl bg-[#d4bfac]">
+          <div className="relative h-72 md:h-96 overflow-hidden rounded-2xl bg-[#d4bfac] order-1 md:order-2">
             <Image
               src="/ai-photos/hero-treatment.png"
               alt="Permanent makeup artist preparing an eyebrow treatment"
@@ -48,10 +48,10 @@ export default function Home() {
       </section>
 
       {/* Services */}
-      <section className="py-24 px-6">
+      <section className="py-16 md:py-24 px-6">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-light text-center mb-16 text-[#1a1a1a]">What I offer</h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <h2 className="text-2xl md:text-3xl font-light text-center mb-10 md:mb-16 text-[#1a1a1a]">What I offer</h2>
+          <div className="grid md:grid-cols-3 gap-4 md:gap-8">
             {[
               {
                 title: "Permanent Makeup",
@@ -85,9 +85,9 @@ export default function Home() {
       </section>
 
       {/* About */}
-      <section className="bg-[#f0e6d8] py-24 px-6">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-          <div className="relative h-80 overflow-hidden rounded-2xl bg-[#d4bfac]">
+      <section className="bg-[#f0e6d8] py-16 md:py-24 px-6">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+          <div className="relative h-64 md:h-80 overflow-hidden rounded-2xl bg-[#d4bfac]">
             <Image
               src="/ai-photos/about-artist.png"
               alt="Permanent makeup educator in a warm professional studio"
@@ -98,7 +98,7 @@ export default function Home() {
           </div>
           <div>
             <p className="text-sm tracking-[0.2em] uppercase text-[#b8956a] mb-4">About me</p>
-            <h2 className="text-3xl font-light mb-6 text-[#1a1a1a]">Certified master<br />& educator</h2>
+            <h2 className="text-2xl md:text-3xl font-light mb-6 text-[#1a1a1a]">Certified master<br />& educator</h2>
             <p className="text-[#6b6b6b] leading-relaxed mb-4">
               I&apos;ve been practicing permanent makeup for over 10 years, working with clients across Canada.
               My approach focuses on natural-looking results that complement your unique features.

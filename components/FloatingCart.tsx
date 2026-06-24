@@ -14,7 +14,7 @@ export default function FloatingCart() {
     <>
       <button
         onClick={() => setOpen(true)}
-        className="fixed bottom-6 right-6 z-40 flex items-center gap-3 bg-[#1a1a1a] text-white pl-4 pr-5 py-3 rounded-full shadow-lg hover:bg-[#333] transition-all duration-300 animate-[fadeUp_0.25s_ease-out]"
+        className="fixed bottom-5 right-4 md:bottom-6 md:right-6 z-40 flex items-center gap-3 bg-[#1a1a1a] text-white pl-4 pr-5 py-3 rounded-full shadow-lg hover:bg-[#333] transition-all duration-300 animate-[fadeUp_0.25s_ease-out]"
       >
         <span className="relative">
           <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">

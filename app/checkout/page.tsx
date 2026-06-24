@@ -39,15 +39,15 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div className="max-w-5xl mx-auto px-6 py-16">
-      <div className="mb-10">
+    <div className="max-w-5xl mx-auto px-4 md:px-6 py-10 md:py-16">
+      <div className="mb-8 md:mb-10">
         <p className="text-sm tracking-[0.2em] uppercase text-[#b8956a] mb-3">Secure payment</p>
-        <h1 className="text-4xl font-light text-[#1a1a1a]">Checkout</h1>
+        <h1 className="text-3xl md:text-4xl font-light text-[#1a1a1a]">Checkout</h1>
       </div>
 
-      <div className="grid md:grid-cols-[1fr_380px] gap-12">
+      <div className="grid md:grid-cols-[1fr_380px] gap-8 md:gap-12">
         {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-6 order-2 md:order-1">
           <div>
             <h2 className="text-sm tracking-widest uppercase text-[#6b6b6b] mb-4">Contact</h2>
             <div className="space-y-3">
@@ -122,8 +122,8 @@ export default function CheckoutPage() {
         </form>
 
         {/* Order summary */}
-        <div>
-          <div className="border border-[#e5ddd4] rounded-2xl p-6 sticky top-24">
+        <div className="order-1 md:order-2">
+          <div className="border border-[#e5ddd4] rounded-2xl p-6 md:sticky md:top-24">
             <h2 className="text-sm tracking-widest uppercase text-[#6b6b6b] mb-4">Order summary</h2>
             <ul className="space-y-3 mb-4">
               {items.map((item) => (

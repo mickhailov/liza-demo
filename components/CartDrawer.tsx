@@ -15,7 +15,7 @@ export default function CartDrawer({ open, onClose }: { open: boolean; onClose: 
         />
       )}
       <div
-        className={`fixed top-0 right-0 h-full w-96 bg-[#faf8f5] border-l border-[#e5ddd4] z-50 flex flex-col transition-transform duration-300 ${
+        className={`fixed top-0 right-0 h-full w-full sm:w-96 bg-[#faf8f5] border-l border-[#e5ddd4] z-50 flex flex-col transition-transform duration-300 ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
