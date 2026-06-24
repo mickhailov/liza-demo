@@ -3,6 +3,9 @@
 import Image from "next/image";
 import { useCart } from "@/contexts/CartContext";
 import { useState } from "react";
+import ProductModal from "@/components/ProductModal";
+
+type Product = typeof products[0];
 
 const products = [
   { id: 1, name: "Brow Pigment — Warm Brown", price: 49, category: "Pigments", desc: "Long-lasting warm brown pigment for natural brow enhancement.", color: "#c4a882", image: "/products/pigment-brown.jpg" },
@@ -16,8 +19,10 @@ const products = [
 export default function ShopPage() {
   const { add } = useCart();
   const [added, setAdded] = useState<number | null>(null);
+  const [selected, setSelected] = useState<Product | null>(null);
 
-  function handleAdd(p: typeof products[0]) {
+  function handleAdd(p: Product, e: React.MouseEvent) {
+    e.stopPropagation();
     add({ id: p.id, name: p.name, price: p.price, type: "product" });
     setAdded(p.id);
     setTimeout(() => setAdded(null), 1200);
@@ -30,9 +35,11 @@ export default function ShopPage() {
         <h1 className="text-4xl font-light text-[#1a1a1a]">Shop</h1>
       </div>
 
+      {selected && <ProductModal product={selected} onClose={() => setSelected(null)} />}
+
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {products.map((product) => (
-          <div key={product.id} className="border border-[#e5ddd4] rounded-2xl overflow-hidden hover:border-[#b8956a] transition-colors">
+          <div key={product.id} onClick={() => setSelected(product)} className="border border-[#e5ddd4] rounded-2xl overflow-hidden hover:border-[#b8956a] transition-colors cursor-pointer group">
             {/* IMAGE PLACEHOLDER — replace div with <Image> once photos are ready */}
             {/* Expected file: public{product.image} e.g. public/products/pigment-brown.jpg */}
             {/* To replace: <div className="relative h-52 overflow-hidden"><Image src={product.image} alt={product.name} fill className="object-cover" /></div> */}
@@ -54,7 +61,7 @@ export default function ShopPage() {
               <div className="flex items-center justify-between">
                 <span className="text-lg font-light text-[#1a1a1a]">${product.price} CAD</span>
                 <button
-                  onClick={() => handleAdd(product)}
+                  onClick={(e) => handleAdd(product, e)}
                   className={`px-5 py-2 rounded-full text-xs tracking-wide transition-all duration-300 ${
                     added === product.id
                       ? "bg-[#b8956a] text-white"
