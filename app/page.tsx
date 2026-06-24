@@ -9,7 +9,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
           <div>
             <p className="text-sm tracking-[0.2em] uppercase text-[#b8956a] mb-4">
-              Permanent Makeup Artist · Toronto, Canada
+              Permanent Makeup Artist · Winnipeg, Canada
             </p>
             <h1 className="text-5xl font-light leading-tight text-[#1a1a1a] mb-6">
               The art of<br />
