@@ -1,6 +1,7 @@
 "use client";
 
 import { useCart } from "@/contexts/CartContext";
+import Image from "next/image";
 import { useState } from "react";
 import VideoModal from "@/components/VideoModal";
 
@@ -57,6 +58,17 @@ export default function CoursesPage() {
         <p className="text-[#6b6b6b] max-w-xl">
           Professional permanent makeup training at your own pace. Lifetime access and certificate on completion.
         </p>
+      </div>
+
+      <div className="relative h-72 overflow-hidden rounded-2xl bg-[#f0e6d8] mb-10">
+        <Image
+          src="/ai-photos/course-training.png"
+          alt="Permanent makeup online course workspace"
+          fill
+          priority
+          sizes="(min-width: 1024px) 1152px, 100vw"
+          className="object-cover"
+        />
       </div>
 
       <div className="grid md:grid-cols-3 gap-6 mb-16">

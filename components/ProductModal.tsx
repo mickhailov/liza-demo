@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect } from "react";
 import { useCart } from "@/contexts/CartContext";
 import { useState } from "react";
@@ -39,16 +40,14 @@ export default function ProductModal({ product, onClose }: { product: Product; o
       <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={onClose} />
       <div className="relative bg-[#faf8f5] rounded-3xl overflow-hidden w-full max-w-lg shadow-2xl animate-[fadeUp_0.2s_ease-out]">
         {/* Image area */}
-        <div className="h-64 flex flex-col items-center justify-center gap-2" style={{ backgroundColor: product.color + "30" }}>
-          <div className="w-20 h-20 rounded-full border-2 border-dashed flex items-center justify-center" style={{ borderColor: product.color }}>
-            <svg width="26" height="26" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" style={{ color: product.color }}>
-              <path d="M21 15a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h4l2-3h4l2 3h4a2 2 0 012 2z"/>
-              <circle cx="12" cy="11" r="3"/>
-            </svg>
-          </div>
-          <p className="text-[10px] tracking-wide" style={{ color: product.color }}>
-            {product.image.replace("/products/", "")}
-          </p>
+        <div className="relative h-64 bg-[#f0e6d8]">
+          <Image
+            src={product.image}
+            alt={product.name}
+            fill
+            sizes="(min-width: 640px) 512px, 100vw"
+            className="object-cover"
+          />
         </div>
 
         {/* Close button */}

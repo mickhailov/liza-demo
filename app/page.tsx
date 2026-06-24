@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -33,8 +34,15 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          <div className="bg-[#d4bfac] rounded-2xl h-96 flex items-center justify-center">
-            <p className="text-[#8a7060] text-sm tracking-wide">Photo coming soon</p>
+          <div className="relative h-96 overflow-hidden rounded-2xl bg-[#d4bfac]">
+            <Image
+              src="/ai-photos/hero-treatment.png"
+              alt="Permanent makeup artist preparing an eyebrow treatment"
+              fill
+              priority
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="object-cover"
+            />
           </div>
         </div>
       </section>
@@ -79,8 +87,14 @@ export default function Home() {
       {/* About */}
       <section className="bg-[#f0e6d8] py-24 px-6">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-          <div className="bg-[#d4bfac] rounded-2xl h-80 flex items-center justify-center">
-            <p className="text-[#8a7060] text-sm tracking-wide">Photo coming soon</p>
+          <div className="relative h-80 overflow-hidden rounded-2xl bg-[#d4bfac]">
+            <Image
+              src="/ai-photos/about-artist.png"
+              alt="Permanent makeup educator in a warm professional studio"
+              fill
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="object-cover"
+            />
           </div>
           <div>
             <p className="text-sm tracking-[0.2em] uppercase text-[#b8956a] mb-4">About me</p>
