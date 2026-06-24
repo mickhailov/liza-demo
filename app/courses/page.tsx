@@ -2,6 +2,7 @@
 
 import { useCart } from "@/contexts/CartContext";
 import { useState } from "react";
+import VideoModal from "@/components/VideoModal";
 
 const courses = [
   {
@@ -11,6 +12,7 @@ const courses = [
     lessons: 20,
     price: 299,
     badge: "Most popular",
+    freePreview: true,
     topics: ["Face mapping & symmetry", "Colour theory & skin types", "Microblading technique", "Powder & ombre brows", "Healing process & corrections"],
   },
   {
@@ -20,6 +22,7 @@ const courses = [
     lessons: 12,
     price: 199,
     badge: null,
+    freePreview: false,
     topics: ["Lip anatomy & shapes", "Pigment selection", "Needle techniques", "After-care protocols"],
   },
   {
@@ -29,6 +32,7 @@ const courses = [
     lessons: 35,
     price: 599,
     badge: "Best value",
+    freePreview: false,
     topics: ["Full brow course content", "Full lip course content", "Eyeliner techniques", "Business & client management", "Live Q&A sessions"],
   },
 ];
@@ -36,6 +40,7 @@ const courses = [
 export default function CoursesPage() {
   const { add } = useCart();
   const [enrolled, setEnrolled] = useState<number | null>(null);
+  const [videoOpen, setVideoOpen] = useState(false);
 
   function handleEnroll(c: typeof courses[0]) {
     add({ id: c.id, name: c.title, price: c.price, type: "course" });
@@ -45,6 +50,7 @@ export default function CoursesPage() {
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-16">
+      {videoOpen && <VideoModal title="Eyebrow Mastery — Free Preview Lesson" onClose={() => setVideoOpen(false)} />}
       <div className="mb-12">
         <p className="text-sm tracking-[0.2em] uppercase text-[#b8956a] mb-3">Learn from a master</p>
         <h1 className="text-4xl font-light text-[#1a1a1a] mb-4">Online Courses</h1>
@@ -64,6 +70,11 @@ export default function CoursesPage() {
             {course.badge && (
               <div className="bg-[#b8956a] text-white text-xs tracking-widest uppercase text-center py-2">
                 {course.badge}
+              </div>
+            )}
+            {course.freePreview && !course.badge && (
+              <div className="bg-[#1a1a1a] text-white text-xs tracking-widest uppercase text-center py-2">
+                Free preview available
               </div>
             )}
             <div className="p-8 flex flex-col flex-1">
@@ -87,16 +98,26 @@ export default function CoursesPage() {
                   <span className="text-2xl font-light text-[#1a1a1a]">${course.price}</span>
                   <span className="text-sm text-[#8a8a8a]">CAD</span>
                 </div>
-                <button
-                  onClick={() => handleEnroll(course)}
-                  className={`w-full py-3 rounded-full text-sm tracking-wide transition-all duration-300 ${
-                    enrolled === course.id
-                      ? "bg-[#b8956a] text-white"
-                      : "bg-[#1a1a1a] text-white hover:bg-[#333]"
-                  }`}
-                >
-                  {enrolled === course.id ? "Added to cart ✓" : "Enroll now"}
-                </button>
+                <div className="flex flex-col gap-2">
+                  <button
+                    onClick={() => handleEnroll(course)}
+                    className={`w-full py-3 rounded-full text-sm tracking-wide transition-all duration-300 ${
+                      enrolled === course.id
+                        ? "bg-[#b8956a] text-white"
+                        : "bg-[#1a1a1a] text-white hover:bg-[#333]"
+                    }`}
+                  >
+                    {enrolled === course.id ? "Added to cart ✓" : "Enroll now"}
+                  </button>
+                  {course.freePreview && (
+                    <button
+                      onClick={() => setVideoOpen(true)}
+                      className="w-full py-3 rounded-full text-sm tracking-wide border border-[#e5ddd4] text-[#6b6b6b] hover:border-[#b8956a] hover:text-[#b8956a] transition-all duration-200 flex items-center justify-center gap-2"
+                    >
+                      <span className="text-xs">▶</span> Watch free lesson
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
           </div>
