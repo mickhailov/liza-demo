@@ -1,65 +1,104 @@
-import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div>
+      {/* Hero */}
+      <section className="bg-[#f0e6d8] py-28 px-6">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+          <div>
+            <p className="text-sm tracking-[0.2em] uppercase text-[#b8956a] mb-4">
+              Permanent Makeup Artist · Toronto, Canada
+            </p>
+            <h1 className="text-5xl font-light leading-tight text-[#1a1a1a] mb-6">
+              The art of<br />
+              <em>natural beauty</em>
+            </h1>
+            <p className="text-[#6b6b6b] text-lg leading-relaxed mb-10 max-w-md">
+              Professional permanent makeup services and online courses.
+              Learn from a certified master with 10+ years of experience.
+            </p>
+            <div className="flex gap-4 flex-wrap">
+              <Link
+                href="/booking"
+                className="bg-[#1a1a1a] text-white px-8 py-3 rounded-full text-sm tracking-wide hover:bg-[#333] transition-colors"
+              >
+                Book a session
+              </Link>
+              <Link
+                href="/courses"
+                className="border border-[#1a1a1a] text-[#1a1a1a] px-8 py-3 rounded-full text-sm tracking-wide hover:bg-[#1a1a1a] hover:text-white transition-colors"
+              >
+                View courses
+              </Link>
+            </div>
+          </div>
+          <div className="bg-[#d4bfac] rounded-2xl h-96 flex items-center justify-center">
+            <p className="text-[#8a7060] text-sm tracking-wide">Photo coming soon</p>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Services */}
+      <section className="py-24 px-6">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-light text-center mb-16 text-[#1a1a1a]">What I offer</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Permanent Makeup",
+                desc: "Eyebrows, lips, eyeliner — professional results that last for years. Book a consultation to discuss your goals.",
+                link: "/booking",
+                cta: "Book now",
+              },
+              {
+                title: "Online Courses",
+                desc: "20 in-depth lessons on permanent makeup techniques. Learn at your own pace with lifetime access.",
+                link: "/courses",
+                cta: "See courses",
+              },
+              {
+                title: "Professional Products",
+                desc: "Pigments, tools and aftercare products trusted by professionals. Used in every session.",
+                link: "/shop",
+                cta: "Shop now",
+              },
+            ].map((item) => (
+              <div key={item.title} className="border border-[#e5ddd4] rounded-2xl p-8 hover:border-[#b8956a] transition-colors">
+                <h3 className="text-xl font-light mb-3 text-[#1a1a1a]">{item.title}</h3>
+                <p className="text-[#6b6b6b] text-sm leading-relaxed mb-6">{item.desc}</p>
+                <Link href={item.link} className="text-sm text-[#b8956a] tracking-wide hover:underline">
+                  {item.cta} →
+                </Link>
+              </div>
+            ))}
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* About */}
+      <section className="bg-[#f0e6d8] py-24 px-6">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+          <div className="bg-[#d4bfac] rounded-2xl h-80 flex items-center justify-center">
+            <p className="text-[#8a7060] text-sm tracking-wide">Photo coming soon</p>
+          </div>
+          <div>
+            <p className="text-sm tracking-[0.2em] uppercase text-[#b8956a] mb-4">About me</p>
+            <h2 className="text-3xl font-light mb-6 text-[#1a1a1a]">Certified master<br />& educator</h2>
+            <p className="text-[#6b6b6b] leading-relaxed mb-4">
+              I&apos;ve been practicing permanent makeup for over 10 years, working with clients across Canada.
+              My approach focuses on natural-looking results that complement your unique features.
+            </p>
+            <p className="text-[#6b6b6b] leading-relaxed mb-8">
+              I&apos;m passionate about education and have trained dozens of artists through my online courses.
+              Each lesson reflects real-world techniques I use with clients every day.
+            </p>
+            <Link href="/booking" className="text-sm text-[#b8956a] tracking-wide hover:underline">
+              Book a consultation →
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
