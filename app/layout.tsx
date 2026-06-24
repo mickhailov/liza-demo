@@ -22,7 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <FloatingCart />
         </CartProvider>
         <footer className="border-t border-[#e5ddd4] py-8 text-center text-sm text-[#8a8a8a]">
-          © 2025 Liza Pozhydaeva. All rights reserved.
+          © 2026 Liza Pozhydaeva. All rights reserved.
         </footer>
       </body>
     </html>
