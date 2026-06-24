@@ -1,15 +1,16 @@
 "use client";
 
+import Image from "next/image";
 import { useCart } from "@/contexts/CartContext";
 import { useState } from "react";
 
 const products = [
-  { id: 1, name: "Brow Pigment — Warm Brown", price: 49, category: "Pigments", desc: "Long-lasting warm brown pigment for natural brow enhancement.", color: "#c4a882" },
-  { id: 2, name: "Brow Pigment — Ash Taupe", price: 49, category: "Pigments", desc: "Cool-toned ash taupe for soft, modern brows.", color: "#a89080" },
-  { id: 3, name: "Lip Pigment — Nude Rose", price: 54, category: "Pigments", desc: "Delicate nude rose for natural lip blush results.", color: "#d4a0a0" },
-  { id: 4, name: "Aftercare Healing Cream", price: 28, category: "Aftercare", desc: "Soothing cream for post-procedure care. Speeds up healing.", color: "#e8d5c4" },
-  { id: 5, name: "Microblading Pen Set", price: 89, category: "Tools", desc: "Professional-grade microblading pens for precise hair strokes.", color: "#8a9090" },
-  { id: 6, name: "Numbing Cream 30g", price: 35, category: "Accessories", desc: "Topical numbing cream for maximum client comfort.", color: "#c8d4d0" },
+  { id: 1, name: "Brow Pigment — Warm Brown", price: 49, category: "Pigments", desc: "Long-lasting warm brown pigment for natural brow enhancement.", color: "#c4a882", image: "/products/pigment-brown.jpg" },
+  { id: 2, name: "Brow Pigment — Ash Taupe", price: 49, category: "Pigments", desc: "Cool-toned ash taupe for soft, modern brows.", color: "#a89080", image: "/products/pigment-taupe.jpg" },
+  { id: 3, name: "Lip Pigment — Nude Rose", price: 54, category: "Pigments", desc: "Delicate nude rose for natural lip blush results.", color: "#d4a0a0", image: "/products/pigment-rose.jpg" },
+  { id: 4, name: "Aftercare Healing Cream", price: 28, category: "Aftercare", desc: "Soothing cream for post-procedure care. Speeds up healing.", color: "#e8d5c4", image: "/products/aftercare-cream.jpg" },
+  { id: 5, name: "Microblading Pen Set", price: 89, category: "Tools", desc: "Professional-grade microblading pens for precise hair strokes.", color: "#8a9090", image: "/products/microblading-pen.jpg" },
+  { id: 6, name: "Numbing Cream 30g", price: 35, category: "Accessories", desc: "Topical numbing cream for maximum client comfort.", color: "#c8d4d0", image: "/products/numbing-cream.jpg" },
 ];
 
 export default function ShopPage() {
@@ -32,8 +33,19 @@ export default function ShopPage() {
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {products.map((product) => (
           <div key={product.id} className="border border-[#e5ddd4] rounded-2xl overflow-hidden hover:border-[#b8956a] transition-colors">
-            <div className="h-52 flex items-center justify-center" style={{ backgroundColor: product.color + "40" }}>
-              <div className="w-16 h-16 rounded-full" style={{ backgroundColor: product.color }} />
+            {/* IMAGE PLACEHOLDER — replace div with <Image> once photos are ready */}
+            {/* Expected file: public{product.image} e.g. public/products/pigment-brown.jpg */}
+            {/* To replace: <div className="relative h-52 overflow-hidden"><Image src={product.image} alt={product.name} fill className="object-cover" /></div> */}
+            <div className="h-52 flex flex-col items-center justify-center gap-2" style={{ backgroundColor: product.color + "30" }}>
+              <div className="w-14 h-14 rounded-full border-2 border-dashed flex items-center justify-center" style={{ borderColor: product.color }}>
+                <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" style={{ color: product.color }}>
+                  <path d="M21 15a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h4l2-3h4l2 3h4a2 2 0 012 2z"/>
+                  <circle cx="12" cy="11" r="3"/>
+                </svg>
+              </div>
+              <p className="text-[10px] tracking-wide" style={{ color: product.color }}>
+                {product.image.replace("/products/", "")}
+              </p>
             </div>
             <div className="p-6">
               <p className="text-xs tracking-widest uppercase text-[#b8956a] mb-1">{product.category}</p>
