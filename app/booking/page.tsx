@@ -4,10 +4,10 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 const categories = [
-  { id: "brows", title: "Eyebrow Services", desc: "Microblading, powder brows, ombre, combination techniques", duration: "2–3 hours", icon: "✦" },
-  { id: "lips", title: "Lip Services", desc: "Lip blush, full lip colour, lip liner, neutralisation", duration: "2 hours", icon: "◈" },
-  { id: "eyeliner", title: "Eyeliner", desc: "Classic liner, lash enhancement, lower lash line", duration: "1.5 hours", icon: "◉" },
-  { id: "consultation", title: "Free Consultation", desc: "Discuss your goals, skin type, and the best technique for you", duration: "30 min", icon: "◎" },
+  { id: "brows", title: "Eyebrow Services", desc: "Microblading, powder brows, ombre, combination techniques", duration: "2–3 hours", icon: "✦", price: 450 },
+  { id: "lips", title: "Lip Services", desc: "Lip blush, full lip colour, lip liner, neutralisation", duration: "2 hours", icon: "◈", price: 380 },
+  { id: "eyeliner", title: "Eyeliner", desc: "Classic liner, lash enhancement, lower lash line", duration: "1.5 hours", icon: "◉", price: 300 },
+  { id: "consultation", title: "Free Consultation", desc: "Discuss your goals, skin type, and the best technique for you", duration: "30 min", icon: "◎", price: 0 },
 ];
 
 const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -163,7 +163,12 @@ export default function BookingPage() {
                 <span className="text-[#b8956a] text-lg">{cat.icon}</span>
                 {selected === cat.id && <span className="text-[10px] tracking-widest uppercase text-[#b8956a] font-medium">Selected</span>}
               </div>
-              <h3 className="font-light text-[#1a1a1a] mb-1">{cat.title}</h3>
+              <div className="flex items-baseline justify-between mb-1">
+                <h3 className="font-light text-[#1a1a1a]">{cat.title}</h3>
+                <span className="text-sm font-light text-[#1a1a1a] ml-2 shrink-0">
+                  {cat.price === 0 ? "Free" : `$${cat.price} CAD`}
+                </span>
+              </div>
               <p className="text-xs text-[#6b6b6b] leading-relaxed mb-3">{cat.desc}</p>
               <p className="text-xs text-[#b8956a]">⏱ {cat.duration}</p>
             </button>
